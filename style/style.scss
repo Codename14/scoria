@@ -267,6 +267,7 @@ section {
                 //     // animation: rotate 5s infinite;
                 // }
                 .score-pointer {
+                    display: block;
                     fill: rgb(37, 52, 90);
                     position: absolute;
                     bottom: 15px;

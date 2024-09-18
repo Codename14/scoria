@@ -198,6 +198,7 @@ section > div {
   display: inline-block;
 }
 .summary .summary__details .summary__score .image-container .score-pointer {
+  display: block;
   fill: rgb(37, 52, 90);
   position: absolute;
   bottom: 15px;
