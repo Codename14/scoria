@@ -1,0 +1,338 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+html {
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+  background-color: #ffffff;
+  scroll-behavior: smooth;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes zoomIn {
+  from {
+    scale: 0;
+    opacity: 0;
+  }
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: initial;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+p {
+  font-size: clamp(0.8rem, 3.5vw + 0.1rem, 1rem);
+}
+
+.title-xxl {
+  font-size: clamp(1.4rem, 5vw + 0.1rem, 1.8rem);
+}
+
+.title-xl {
+  font-size: clamp(1.3rem, 4vw + 0.1rem, 1.5rem);
+}
+
+.title-md {
+  font-size: clamp(1.1rem, 3.5vw + 0.1rem, 1.4rem);
+}
+
+.title-sm {
+  font-size: clamp(1rem, 3vw + 0.1rem, 1.2rem);
+}
+
+.text-xs {
+  font-size: clamp(0.7rem, 3vw + 0.1rem, 0.85rem);
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.text--left {
+  text-align: left;
+}
+
+:where(.flex) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.flex-col {
+  display: flex;
+  justify-content: center;
+  gap: 0.15em;
+  flex-direction: column;
+}
+
+.head-title {
+  margin-block: 5px 10px;
+  color: var(--color_orange);
+  font-size: clamp(2rem, 5vw + 0.1rem, 2.2rem);
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (min-height: 800px) {
+  .head-title {
+    font-size: clamp(2.4rem, 5vw + 0.1rem, 3rem);
+    margin-block: 20px;
+  }
+}
+.limit-width {
+  width: min(1000px, 100% - 1rem);
+  margin-inline: auto;
+  margin: 0 auto;
+}
+
+nav {
+  padding-inline: 1em;
+}
+nav .title {
+  margin-bottom: 0.25em;
+  font-weight: 600;
+}
+nav .nav__container {
+  padding-block: 2em;
+  padding-top: 1em;
+  border-bottom: 2px solid #f7f7f7;
+  flex-direction: column-reverse;
+  gap: 1em;
+}
+nav .nav__container .nav__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+nav img {
+  height: 100px;
+}
+@media (min-width: 500px) {
+  nav .nav__container {
+    flex-direction: row;
+    padding-top: 2em;
+  }
+}
+@media (min-width: 1000px) {
+  nav .nav__container {
+    padding-inline: 1em;
+  }
+}
+
+@keyframes rotate {
+  from {
+    rotate: -90deg;
+  }
+  to {
+    rotate: 90deg;
+  }
+}
+nav {
+  animation: fadeIn 800ms ease-in;
+  animation-delay: 0;
+}
+
+section > div {
+  animation: fadeIn 800ms ease-in;
+  animation-delay: 100ms;
+}
+
+.summary {
+  margin-top: 2em;
+}
+.summary .summary__details {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-bottom: 1em;
+}
+.summary .summary__details .summary__score {
+  max-width: min(100%, 500px);
+  margin-inline: auto;
+}
+.summary .summary__details .summary__score .image-container {
+  margin-inline: auto;
+  padding-top: 1em;
+  position: relative;
+}
+.summary .summary__details .summary__score .image-container .pointer__wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-51.5%);
+  height: 50px;
+  width: 75px;
+  display: inline-block;
+}
+.summary .summary__details .summary__score .image-container .score-pointer {
+  fill: rgb(37, 52, 90);
+  position: absolute;
+  bottom: 15px;
+  left: -1.5px;
+  height: 30vw;
+  width: 75px;
+  transform-origin: 50% 82%;
+  rotate: -100deg;
+  transition: transform 2500ms 500ms ease;
+}
+@media (min-width: 500px) {
+  .summary .summary__details .summary__score .image-container .score-pointer {
+    height: 160px;
+    bottom: 20px;
+  }
+}
+.summary .summary__details .summary__score .image-container img {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.summary .summary__details .summary__score .summary__score-info {
+  text-align: center;
+  margin-top: 1em;
+}
+.summary .summary__details .summary__score .summary__score-info .score-helper-text {
+  margin-top: 0.3em;
+  letter-spacing: 1px;
+}
+.summary .summary__details-text {
+  margin-top: 0.2em;
+  margin-bottom: 2em;
+}
+.summary .summary__box {
+  text-align: left;
+  background: #f7f7f7;
+  padding: 1em;
+}
+.summary .summary__box .line {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.8em;
+}
+.summary .summary__box .line p {
+  letter-spacing: 0.5px;
+}
+@media (min-width: 960px) {
+  .summary .summary__details {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.star {
+  fill: #a6a6a6;
+  stroke: #a6a6a6;
+}
+.star.filled {
+  fill: rgb(241, 205, 0);
+  stroke: rgb(241, 205, 0);
+}
+
+.green-box {
+  text-align: center;
+  background: #b9d24c;
+  color: white;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.account {
+  border-top: 2px solid #f7f7f7;
+}
+
+.account-info {
+  margin-block: 2em;
+  background: #f7f7f7;
+  padding: 2em 1em;
+}
+.account-info .account__title {
+  margin-bottom: 0.5em;
+}
+.account-info .account__line {
+  display: grid;
+  grid-template-columns: 9em 1fr;
+  gap: 2em;
+  margin-bottom: 0.2em;
+}
+.account-info .account__line p {
+  letter-spacing: 0.5px;
+}
+.account-info .account__line:last-of-type {
+  margin-bottom: 1em;
+}
+
+.share {
+  padding: 1em;
+  border-top: 2px solid #f7f7f7;
+}
+
+.share-box {
+  background: #f7f7f7;
+  width: min(100%, 500px);
+  padding: 1em;
+  margin-inline: auto;
+  margin-block: 1em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25em;
+}
+.share-box .share__email {
+  background: white;
+  padding: 0.2em 1em;
+  border-radius: 30px;
+}
+.share-box .svg-holder {
+  margin-top: 1em;
+  width: 80px;
+  height: 80px;
+  background: #f8b818;
+  padding: 1.2em;
+  border-radius: 50vw;
+}
+.share-box svg {
+  width: 100%;
+  fill: white;
+}
+
+footer {
+  padding: 1em;
+  text-align: center;
+  margin-inline: auto;
+  font-size: clamp(0.7rem, 3vw + 0.1rem, 0.85rem);
+  font-style: italic;
+  opacity: 0.8;
+}/*# sourceMappingURL=style.css.map */
