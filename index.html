@@ -296,13 +296,14 @@
                             </div>
                         </div>
                         <div class="summary__score-info">
-                            <h3 class="title-xl"><span class="bold">92</span> / 100</h3>
+                            score-box-text
+                            <h3 class="title-xl"><span class="bold" id="score">92</span> / 100</h3>
                             <h4 class="score-helper-text">The higher the score, the lower the risk.</h4>
                         </div>
                     </div>
                 </div>
-                <h1 class="green-box title-md bold limit-width">
-                    The account holder’s ability to meet the monthly payment is assessed as EXCELLENT.
+                <h1 class="score-box-text title-md bold limit-width">
+                    The account holder’s ability to meet the monthly payment is assessed as <span id="score-text"></span>.
                 </h1>
             </div>
             <div class="account limit-width">
@@ -338,11 +339,45 @@
             </div>
         </section>
         <footer>
-            Scoria is a product of CYGNUS Account Information Service Provider UAB., a Financial Institution authorised by all the National Banks of
-            the European Union.
+            <p>
+                Scoria is a product of CYGNUS Account Information Service Provider UAB., a Financial Institution authorised by all the National Banks
+                of the European Union.
+            </p>
+            <div class="flex">
+                <button class="btn" onclick="updateScore(5)">Very poor</button>
+                <button class="btn" onclick="updateScore(25)">Poor</button>
+                <button class="btn" onclick="updateScore(55)">Fair</button>
+                <button class="btn" onclick="updateScore(75)">Good</button>
+                <button class="btn" onclick="updateScore(100)">Excellent</button>
+            </div>
         </footer>
     </body>
     <script>
+        function updateScore(score) {
+            console.log('score', score);
+            const scoreTextBox = document.querySelector('.score-box-text');
+            scoreTextBox.classList.remove('orange', 'yellow', 'green', 'darkgreen');
+
+            let scoreText;
+            if (score <= 20) {
+                scoreText = 'Very Poor';
+            } else if (score <= 40) {
+                scoreText = 'Poor';
+                scoreTextBox.classList.add('orange');
+            } else if (score <= 60) {
+                scoreText = 'Fair';
+                scoreTextBox.classList.add('yellow');
+            } else if (score <= 80) {
+                scoreText = 'Good';
+                scoreTextBox.classList.add('green');
+            } else {
+                scoreTextBox.classList.add('darkgreen');
+                scoreText = 'Excellent';
+            }
+            document.getElementById('score').innerText = score;
+            document.getElementById('score-text').innerText = scoreText;
+            rotateSVG(score);
+        }
         function rotateSVG(value) {
             const rotation = value * 2;
             const svgElement = document.querySelector('.score-pointer');
@@ -352,6 +387,5 @@
                 console.error('Element with class .score-pointer not found.');
             }
         }
-        rotateSVG(92);
     </script>
 </html>
