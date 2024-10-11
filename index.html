@@ -14,15 +14,15 @@
         <!-- Font -->
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
     </head>
-    <body>
+    <body onload="initRotation()">
         <nav>
             <div class="nav__container flex-between text-left limit-width">
                 <div>
                     <h2 class="title title-xxl">Financial Stability Report</h2>
                     <div class="nav__details flex-col">
                         <div class="nav__name"><span class="bold">Name:</span> John Doe</div>
-                        <h3 class="nav__ref">Reference number: 2938-21092024</h3>
-                        <h3>Issue date and time: 21/09/2024 15:50</h3>
+                        <h3 class="nav__ref">Reference number: 2938-20240921</h3>
+                        <h3>Issue date and time: 2024/09/21 15:50</h3>
                     </div>
                 </div>
                 <img src="images/logo.png" alt="scoria logo" />
@@ -34,7 +34,13 @@
                     <div>
                         <div class="summary__box">
                             <h2 class="title-xl bold">Summary information</h2>
-                            <p class="text-xs summary__details-text">The scores reflect your ability to meet the specified monthly payment.</p>
+                            <p class="text-xs summary__details-text under-text">
+                                The scores reflect your ability to meet the specified monthly payment.
+                            </p>
+                            <div class="line">
+                                <p>Monthly payment commitment (<span>EUR</span>):</p>
+                                <p>10.000</p>
+                            </div>
                             <div class="line">
                                 <p>Average monthly income:</p>
                                 <div class="stars">
@@ -308,6 +314,10 @@
             <div class="account limit-width">
                 <div class="account-info">
                     <h2 class="account__title title-xl bold">Background information</h2>
+                    <p class="under-text text-xs">
+                        The analysis was conducted based on data from 21/06/2024 to 21/09/2024 using the bank account data of the following
+                        account(s):
+                    </p>
                     <div class="account__line">
                         <p>Account holder:</p>
                         <p>John Doe</p>
@@ -326,16 +336,69 @@
             <div class="share limit-width">
                 <div class="share-box">
                     <h2 class="title-xl bold">Share my report with</h2>
+                    <p class="text-xs mb-1">
+                        Press the button to share the Report with the requesting company, landlord, or anyone you wish. You can enter multiple email
+                        addresses.
+                    </p>
                     <h3 class="share__email">bob.landlord@mail.com</h3>
-                    <a href="#" class="svg-holder">
+                    <button class="svg-holder" id="open-dialog">
                         <svg class="share-icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 50 50">
                             <path
                                 d="M 40 0 C 34.535156 0 30.078125 4.398438 30 9.84375 C 30 9.894531 30 9.949219 30 10 C 30 13.6875 31.996094 16.890625 34.96875 18.625 C 36.445313 19.488281 38.167969 20 40 20 C 45.515625 20 50 15.515625 50 10 C 50 4.484375 45.515625 0 40 0 Z M 28.0625 10.84375 L 17.84375 15.96875 C 20.222656 18.03125 21.785156 21 21.96875 24.34375 L 32.3125 19.15625 C 29.898438 17.128906 28.300781 14.175781 28.0625 10.84375 Z M 10 15 C 4.484375 15 0 19.484375 0 25 C 0 30.515625 4.484375 35 10 35 C 12.050781 35 13.941406 34.375 15.53125 33.3125 C 18.214844 31.519531 20 28.472656 20 25 C 20 21.410156 18.089844 18.265625 15.25 16.5 C 13.71875 15.546875 11.929688 15 10 15 Z M 21.96875 25.65625 C 21.785156 28.996094 20.25 31.996094 17.875 34.0625 L 28.0625 39.15625 C 28.300781 35.824219 29.871094 32.875 32.28125 30.84375 Z M 40 30 C 37.9375 30 36.03125 30.644531 34.4375 31.71875 C 31.769531 33.515625 30 36.542969 30 40 C 30 40.015625 30 40.015625 30 40.03125 C 29.957031 40.035156 29.917969 40.058594 29.875 40.0625 L 30 40.125 C 30.066406 45.582031 34.527344 50 40 50 C 45.515625 50 50 45.515625 50 40 C 50 34.484375 45.515625 30 40 30 Z"
                             ></path>
                         </svg>
-                    </a>
+                    </button>
                 </div>
             </div>
+            <dialog data-modal id="user-dialog">
+                <div class="flex-between">
+                    <h3 class="title-xl">Share my report with</h3>
+                    <button type="button" id="close-dialog" class="btn btn--close">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="40"
+                            height="40"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-x"
+                        >
+                            <path d="M18 6 6 18" />
+                            <path d="m6 6 12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <p class="text-xs">Enter the email address(es) of those with whom you would like to share the Report.</p>
+                <p class="text-xs mt-05 mb-1">We will also send a copy of all emails to the following address:</p>
+                <form action="" class="form">
+                    <div id="input-fields" class="dynamic-fields">
+                        <div class="flex">
+                            <input autofocus type="text" placeholder="johndoe@gmail.com" value="johndoe@gmail.com" />
+                            <button class="btn" type="button" id="add-input">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-plus"
+                                >
+                                    <path d="M5 12h14" />
+                                    <path d="M12 5v14" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="btn send-btn" type="submit">Send</button>
+                </form>
+            </dialog>
         </section>
         <footer>
             <p>
@@ -343,15 +406,70 @@
                 of the European Union.
             </p>
             <div class="flex">
-                <button class="btn" onclick="updateScore(5)">Very poor</button>
-                <button class="btn" onclick="updateScore(25)">Poor</button>
-                <button class="btn" onclick="updateScore(55)">Fair</button>
-                <button class="btn" onclick="updateScore(75)">Good</button>
-                <button class="btn" onclick="updateScore(100)">Excellent</button>
+                <button class="btn btn--primary" onclick="updateScore(5)">Very poor</button>
+                <button class="btn btn--primary" onclick="updateScore(25)">Poor</button>
+                <button class="btn btn--primary" onclick="updateScore(55)">Fair</button>
+                <button class="btn btn--primary" onclick="updateScore(75)">Good</button>
+                <button class="btn btn--primary" onclick="updateScore(100)">Excellent</button>
             </div>
         </footer>
     </body>
     <script>
+        //MODAL
+        const openButton = document.getElementById('open-dialog');
+        const closeButton = document.getElementById('close-dialog');
+        const dialog = document.getElementById('user-dialog');
+        openButton.addEventListener('click', () => {
+            dialog.showModal();
+        });
+        closeButton.addEventListener('click', () => {
+            dialog.close();
+        });
+
+        const maxInputs = 5;
+        let inputCount = 0;
+
+        document.getElementById('add-input').addEventListener('click', function () {
+            if (inputCount < maxInputs) {
+                inputCount++;
+                const inputContainer = document.createElement('div');
+                inputContainer.className = 'input-container';
+                inputContainer.innerHTML = `
+                <div class="flex">
+                    <input type="text" name="input${inputCount}" placeholder="Type your ${inputCount} email here">
+                    <button type="button" class="btn remove-input"> <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-x"
+                >
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+                </svg></button>
+                </div>
+        `;
+                document.getElementById('input-fields').appendChild(inputContainer);
+
+                //remove button
+                inputContainer.querySelector('.remove-input').addEventListener('click', function () {
+                    inputContainer.remove();
+                    inputCount--;
+                });
+            } else {
+                alert('Maximum 5 input fields can be added.');
+            }
+        });
+
+        // METER
+        function initRotation() {
+            updateScore(92);
+        }
         function updateScore(score) {
             console.log('score', score);
             const scoreTextBox = document.querySelector('.score-box-text');
@@ -378,7 +496,10 @@
             rotateSVG(score);
         }
         function rotateSVG(value) {
-            const rotation = value * 2;
+            let rotation = value * 2;
+            if (value > 99) {
+                rotation = 99 * 2;
+            }
             const svgElement = document.querySelector('.score-pointer');
             if (svgElement) {
                 svgElement.style.transform = `rotate(${rotation}deg)`;
