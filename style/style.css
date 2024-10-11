@@ -146,6 +146,7 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 0.3em;
 }
 
@@ -254,12 +255,17 @@ section > div {
 }
 .summary .summary__details .summary__score .image-container .pointer__wrapper {
   position: absolute;
-  bottom: -10px;
   left: 50%;
   transform: translateX(-51.5%);
   height: 50px;
   width: 75px;
   display: inline-block;
+  bottom: 10px;
+}
+@media (min-width: 500px) {
+  .summary .summary__details .summary__score .image-container .pointer__wrapper {
+    bottom: -10px;
+  }
 }
 .summary .summary__details .summary__score .image-container .score-pointer {
   display: block;
