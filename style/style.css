@@ -468,6 +468,9 @@ dialog .dynamic-fields {
   margin-top: 0.4em;
   flex-direction: column;
 }
+dialog .dynamic-fields input {
+  width: 250px;
+}
 dialog .input-container > * {
   animation: fadeIn 100ms ease-in;
 }
