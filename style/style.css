@@ -311,6 +311,13 @@ section > div {
 .summary .summary__box .line p {
   letter-spacing: 0.5px;
 }
+.summary .summary__box .commitment-line {
+  font-weight: 700;
+  margin-bottom: 1em;
+}
+.summary .summary__box .commitment-line p {
+  letter-spacing: 1.5px;
+}
 @media (min-width: 960px) {
   .summary .summary__details {
     flex-direction: row;
@@ -446,6 +453,11 @@ dialog::backdrop {
           backdrop-filter: blur(1px);
   background: rgba(0, 0, 0, 0.5);
 }
+dialog .form {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-inline: auto;
+}
 dialog .dynamic-fields {
   display: grid;
   width: -moz-fit-content;
@@ -461,6 +473,11 @@ dialog .input-container > * {
 }
 dialog .remove-input {
   color: rgb(232, 0, 0);
+}
+dialog .add-input-button {
+  display: none;
+  width: 100%;
+  margin-top: 0.5em;
 }
 dialog .send-btn {
   margin-top: 1em;

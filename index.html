@@ -37,7 +37,7 @@
                             <p class="text-xs summary__details-text under-text">
                                 The scores reflect your ability to meet the specified monthly payment.
                             </p>
-                            <div class="line">
+                            <div class="line commitment-line">
                                 <p>Monthly payment commitment (<span>EUR</span>):</p>
                                 <p>10.000</p>
                             </div>
@@ -352,11 +352,11 @@
             <div class="share limit-width">
                 <div class="share-box">
                     <h2 class="title-xl bold">Share my report with</h2>
-                    <p class="text-xs mb-1">
+                    <p class="text-xs mt-05">
                         Press the button to share the Report with the requesting company, landlord, or anyone you wish. You can enter multiple email
                         addresses.
                     </p>
-                    <h3 class="share__email">bob.landlord@mail.com</h3>
+                    <!-- <h3 class="share__email">bob.landlord@mail.com</h3> -->
                     <button class="svg-holder" id="open-dialog">
                         <svg class="share-icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 50 50">
                             <path
@@ -391,36 +391,32 @@
                 <p class="text-xs mt-05 mb-1">We will also send a copy of all emails to the following address:</p>
                 <form action="" class="form">
                     <div id="input-fields" class="dynamic-fields">
-                        <div class="flex">
-                            <input autofocus type="text" placeholder="johndoe@gmail.com" value="johndoe@gmail.com" />
-                            <button class="btn" type="button" id="add-input">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="lucide lucide-plus"
-                                >
-                                    <path d="M5 12h14" />
-                                    <path d="M12 5v14" />
-                                </svg>
-                            </button>
-                        </div>
+                        <input autofocus required type="email" placeholder="johndoe@gmail.com" value="johndoe@gmail.com" />
+                        <input autofocus id="second-email" type="email" placeholder="Share with this email" value="" />
                     </div>
+                    <button class="btn add-input-button" type="button" id="add-input">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-plus"
+                        >
+                            <path d="M5 12h14" />
+                            <path d="M12 5v14" />
+                        </svg>
+                    </button>
                     <button class="btn send-btn" type="submit">Send</button>
                 </form>
             </dialog>
         </section>
         <footer>
-            <p>
-                Scoria is a product of CYGNUS Account Information Service Provider UAB., a Financial Institution authorised by all the National Banks
-                of the European Union.
-            </p>
+            <p>SCORIA is a product of CYGNUS AISP UAB, an Account Information Service Provider operating with the status of a Payment Institution.</p>
             <div class="flex mt-05">
                 <button class="btn btn--primary" onclick="updateScore(5)">Very poor</button>
                 <button class="btn btn--primary" onclick="updateScore(25)">Poor</button>
@@ -442,8 +438,20 @@
             dialog.close();
         });
 
-        const maxInputs = 5;
+        const maxInputs = 3;
         let inputCount = 0;
+        const addButton = document.getElementById('add-input');
+
+        document.getElementById('second-email').addEventListener('input', function () {
+            const emailInput = document.getElementById('second-email');
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (true) {
+                addButton.style.display = 'block';
+            } else {
+                addButton.style.display = 'none';
+            }
+        });
 
         document.getElementById('add-input').addEventListener('click', function () {
             if (inputCount < maxInputs) {
@@ -477,6 +485,12 @@
                     inputContainer.remove();
                     inputCount--;
                 });
+                console.log('inputCount', inputCount);
+                if (inputCount === maxInputs) {
+                    addButton.style.display = 'none';
+                } else {
+                    addButton.style.display = 'block';
+                }
             } else {
                 alert('Maximum 5 input fields can be added.');
             }

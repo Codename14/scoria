@@ -366,6 +366,13 @@ section {
                 letter-spacing: 0.5px;
             }
         }
+        .commitment-line {
+            font-weight: 700;
+            p {
+                letter-spacing: 1.5px;
+            }
+            margin-bottom: 1em;
+        }
     }
 
     @media (min-width: 960px) {
@@ -499,6 +506,10 @@ dialog {
     border-radius: $borderRadiusSoft;
     width: min(100%, 500px);
     background: $boxColor;
+    .form {
+        width: fit-content;
+        margin-inline: auto;
+    }
     // transition: all 150ms ease-in-out;
     .dynamic-fields {
         display: grid;
@@ -514,6 +525,11 @@ dialog {
     }
     .remove-input {
         color: rgb(232, 0, 0);
+    }
+    .add-input-button {
+        display: none;
+        width: 100%;
+        margin-top: 0.5em;
     }
     .send-btn {
         margin-top: 1em;
