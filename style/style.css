@@ -469,7 +469,7 @@ dialog .dynamic-fields {
   flex-direction: column;
 }
 dialog .dynamic-fields input {
-  width: 250px;
+  width: 200px;
 }
 dialog .input-container > * {
   animation: fadeIn 100ms ease-in;

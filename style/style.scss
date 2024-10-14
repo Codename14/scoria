@@ -520,7 +520,8 @@ dialog {
         margin-top: 0.4em;
         flex-direction: column;
         input {
-            width: 250px;
+            width: 200px;
+            // width : min(100%, 220px);
         }
     }
     .input-container > * {
