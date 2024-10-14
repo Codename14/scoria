@@ -446,7 +446,7 @@
             const emailInput = document.getElementById('second-email');
             const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-            if (true) {
+            if (emailPattern.test(emailInput.value)) {
                 addButton.style.display = 'block';
             } else {
                 addButton.style.display = 'none';
@@ -484,13 +484,9 @@
                 inputContainer.querySelector('.remove-input').addEventListener('click', function () {
                     inputContainer.remove();
                     inputCount--;
+                    addButton.style.display = inputCount === maxInputs ? 'none' : 'block';
                 });
-                console.log('inputCount', inputCount);
-                if (inputCount === maxInputs) {
-                    addButton.style.display = 'none';
-                } else {
-                    addButton.style.display = 'block';
-                }
+                addButton.style.display = inputCount === maxInputs ? 'none' : 'block';
             } else {
                 alert('Maximum 5 input fields can be added.');
             }
