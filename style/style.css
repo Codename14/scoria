@@ -47,12 +47,20 @@ h6 {
   font-weight: 400;
 }
 
-p {
-  font-size: clamp(0.8rem, 3.5vw + 0.1rem, 1rem);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a {
+  font-size: clamp(0.8rem, 2.75vw + 0.1rem, 1.1rem);
 }
 
 .title-xxl {
-  font-size: clamp(1.4rem, 5vw + 0.1rem, 1.8rem);
+  font-size: clamp(1.4rem, 4vw + 0.1rem, 1.8rem);
 }
 
 .title-xl {
@@ -237,6 +245,12 @@ section > div {
 
 .summary {
   margin-top: 2em;
+  /*   @media (min-width: 960px) {
+      .summary__details {
+          // flex-direction: row;
+          align-items: center;
+      }
+  } */
 }
 .summary .summary__details {
   display: flex;
@@ -313,16 +327,12 @@ section > div {
 }
 .summary .summary__box .commitment-line {
   font-weight: 700;
+  gap: 0.5em;
+  flex-wrap: wrap;
   margin-bottom: 1em;
 }
 .summary .summary__box .commitment-line p {
   letter-spacing: 1.5px;
-}
-@media (min-width: 960px) {
-  .summary .summary__details {
-    flex-direction: row;
-    align-items: center;
-  }
 }
 
 .star {
@@ -379,9 +389,9 @@ section > div {
 }
 .account-info .account__line {
   display: grid;
-  grid-template-columns: 9em 1fr;
+  grid-template-columns: 10em 1fr;
+  margin-bottom: 0.35em;
   gap: 2em;
-  margin-bottom: 0.2em;
 }
 .account-info .account__line p {
   letter-spacing: 0.5px;
@@ -389,9 +399,21 @@ section > div {
 .account-info .account__line:last-of-type {
   margin-bottom: 1.5em;
 }
+@media screen and (max-width: 500px) {
+  .account-info .account__line {
+    grid-template-columns: 1fr;
+    gap: 0.2em;
+    margin-bottom: 1em;
+  }
+  .account-info .account__line p {
+    font-size: clamp(1rem, 3vw + 0.1rem, 1.2rem);
+  }
+  .account-info .account__line > :first-child {
+    text-decoration: underline;
+  }
+}
 
 .share {
-  padding: 1em;
   border-top: 2px solid #f7f7f7;
 }
 
@@ -406,6 +428,7 @@ section > div {
   flex-direction: column;
   align-items: center;
   gap: 0.25em;
+  padding: clamp(1em, 3vw + 0.1rem, 1.5em);
 }
 .share-box .share__email {
   background: white;
@@ -478,7 +501,6 @@ dialog .remove-input {
   color: rgb(232, 0, 0);
 }
 dialog .add-input-button {
-  display: none;
   width: 100%;
   margin-top: 0.5em;
 }
@@ -518,9 +540,9 @@ doalog[open]::backdrop {
 
 footer {
   padding: 1em;
-  text-align: center;
   margin-inline: auto;
   font-size: clamp(0.7rem, 3vw + 0.1rem, 0.85rem);
   font-style: italic;
   opacity: 0.8;
+  text-align: left;
 }/*# sourceMappingURL=style.css.map */

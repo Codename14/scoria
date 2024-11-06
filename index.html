@@ -20,9 +20,12 @@
                 <div>
                     <h2 class="title title-xxl">Financial Stability Report</h2>
                     <div class="nav__details flex-col">
-                        <div class="nav__name"><span class="bold">Name:</span> John Doe</div>
-                        <h3 class="nav__ref">Reference number: 2938-20240921</h3>
-                        <h3>Issue date and time: 2024/09/21 15:50</h3>
+                        <p class="nav__name title-sm">
+                            <span class="bold title-sm">Name:</span>
+                            John Doe
+                        </p>
+                        <h3 class="nav__ref title-sm">Reference number: 2938-20240921</h3>
+                        <h3 class="title-sm">Issue date and time: 2024/09/21 15:50</h3>
                     </div>
                 </div>
                 <img src="images/logo.png" alt="scoria logo" />
@@ -308,7 +311,7 @@
                     </div>
                 </div>
                 <h1 class="score-box-text title-md bold limit-width">
-                    The account holder’s ability to meet the monthly payment is assessed as <span id="score-text"></span>.
+                    The account holder’s ability to meet the monthly payment is assessed as <span class="title-md bold" id="score-text"></span>.
                 </h1>
             </div>
             <div class="account limit-width">
@@ -391,7 +394,6 @@
                 <p class="text-xs mt-05 mb-1">We will also send a copy of all emails to the following address:</p>
                 <form action="" class="form">
                     <div id="input-fields" class="dynamic-fields">
-                        <input required type="email" placeholder="johndoe@gmail.com" value="johndoe@gmail.com" />
                         <input autofocus id="second-email" type="email" placeholder="Share with this email" value="" />
                     </div>
                     <button class="btn add-input-button" type="button" id="add-input">
@@ -415,7 +417,7 @@
                 </form>
             </dialog>
         </section>
-        <footer>
+        <footer class="limit-width">
             <p>SCORIA is a product of CYGNUS AISP UAB, an Account Information Service Provider operating with the status of a Payment Institution.</p>
             <div class="flex mt-05">
                 <button class="btn btn--primary" onclick="updateScore(5)">Very poor</button>
@@ -438,7 +440,7 @@
             dialog.close();
         });
 
-        const maxInputs = 3;
+        const maxInputs = 4;
         let inputCount = 0;
         const addButton = document.getElementById('add-input');
 
@@ -446,11 +448,11 @@
             const emailInput = document.getElementById('second-email');
             const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-            if (emailPattern.test(emailInput.value)) {
+            /*  if (emailPattern.test(emailInput.value)) {
                 addButton.style.display = 'block';
             } else {
                 addButton.style.display = 'none';
-            }
+            } */
         });
 
         document.getElementById('add-input').addEventListener('click', function () {
