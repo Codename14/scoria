@@ -83,6 +83,10 @@ a {
   font-weight: 500;
 }
 
+.extra-bold {
+  font-weight: 600;
+}
+
 .mt-05 {
   margin-top: 0.5em;
 }
